@@ -5,6 +5,8 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useRouter } from "next/router";
 import styles from "../css/Ferramentas.module.css";
 
+const adminEmail = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
+
 export default function Ferramentas() {
   const [items, setItems] = useState([]);
   const router = useRouter();
@@ -16,7 +18,7 @@ export default function Ferramentas() {
         router.push("/register");
       } else {
         setUserEmail(user.email);
-          
+
         axios
           .get("http://localhost:3000/ferramentas")
           .then((response) => {
@@ -32,12 +34,12 @@ export default function Ferramentas() {
 
   return (
     <div>
-      <h1 className={styles.containerF}>Lista de Ferramentas</h1>
+      <h1 className={styles.container}>Lista de Ferramentas</h1>
       <ul className={styles.list}>
         {items.map((ferramenta, index) => (
           <li key={index}>
-            {ferramenta.nome} 
-            {userEmail === "teste@gmail.com" && ` - ${ferramenta.modelo}`}
+            {ferramenta.nome}
+            {userEmail === adminEmail && ` - ${ferramenta.img}`}
           </li>
         ))}
       </ul>

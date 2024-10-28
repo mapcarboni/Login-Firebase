@@ -1,5 +1,3 @@
-- npm init
-
 - npm install @types/express
 - npm install express
 - npm install pg-promise
@@ -13,8 +11,7 @@
 - npm install nodemon
 - npm install firebase
 
-- mkdir front
-- mkdir back
-
 - npm run devB
 - npm run devF
+
+- lembrar de adicionar .env e .env.local no .gitignore
